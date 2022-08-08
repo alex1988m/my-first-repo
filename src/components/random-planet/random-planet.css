@@ -1,0 +1,24 @@
+.random-planet {
+    height: 250px;
+    background: rgba(45, 45, 45, 0.95);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.random-planet img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.random-planet h1 {
+    padding-left: 1rem;
+}
+
+.random-planet .list-group {
+    margin: 1rem 0 0 1.25rem;
+}
+
+.random-planet .list-group-item {
+    padding: .25rem
+}
