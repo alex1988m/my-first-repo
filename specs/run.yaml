@@ -7,7 +7,7 @@ phases:
       - echo 'Run install phase...'
       - aws --version
       - node --version
-  prebuild:
+  pre_build:
     commands:
       - echo 'Run prebuild phase...'
   build:
