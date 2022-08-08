@@ -1,0 +1,21 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - echo 'Run install phase...'
+      - aws --version
+      - node --version
+  prebuild:
+    commands:
+      - echo 'Run prebuild phase...'
+  build:
+    commands:
+      - echo 'Run build phase...'
+      - node sample.js
+      - npm run go
+  post_build:
+    commands:
+      - echo 'End of run!'
+
