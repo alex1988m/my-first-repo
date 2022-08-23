@@ -1,0 +1,26 @@
+version: 0.2
+env:
+  shell: bash
+phases:
+  build:
+    commands:
+      - mkdir build
+      - echo Write variables to .env file
+      - echo "COMMIT_SHA=$CODEBUILD_RESOLVED_SOURCE_VERSION" >> .env
+      - echo "COMMIT_BRANCH=$CODEBUILD_SOURCE_VERSION" >> .env
+      - echo "CODEBUILD_BUILD_NUMBER=$CODEBUILD_BUILD_NUMBER" >> .env
+      - echo "CODEBUILD_INITIATOR=$CODEBUILD_INITIATOR" >> .env
+      - echo "BUILD_STARTER=$BUILD_INITIATOR" >> .env
+      - echo "SUITE=$SUITE" >> .env
+      - echo "DEBUG=$DEBUG" >> .env
+      - echo "TENANT=$TENANT" >> .env
+      - echo "MOBILE_NEEDED=$MOBILE_NEEDED" >> .env
+      - echo "UI_NEEDED=$UI_NEEDED" >> .env
+      - echo "API_NEEDED=$API_NEEDED" >> .env
+      - echo "ENV FILE"
+      - cat .env
+      - git archive --format zip -o ./build/${PROJECT_NAME}.zip HEAD
+      - zip -rv ./build/${PROJECT_NAME}.zip .env
+  post_build:
+    commands:
+      - aws s3 sync ./build s3://${DUMP_BUCKET_NAME} --metadata SHA=$CODEBUILD_RESOLVED_SOURCE_VERSION
