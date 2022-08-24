@@ -16,7 +16,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "go": "node go.js",
-    "test:api:parallel: "node sample.js"
+    "test:api:parallel": "node sample.js"
   },
   "eslintConfig": {
     "extends": [
