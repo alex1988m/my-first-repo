@@ -1,0 +1,12 @@
+version: 0.2
+env:
+  shell: bash
+phases:
+  build:
+    commands:
+      - echo "Starting api test action!!!!"
+      - npm run test:api:parallel
+  post_build:
+    commands:
+      - echo "Post build action"
+      - npm run go
